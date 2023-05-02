@@ -5,4 +5,5 @@ class Usuario():
         self._album='?'
     def getnome(self):
         return self._nomeUsuario
-        
+    
+print('alo mundo')
