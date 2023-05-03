@@ -13,3 +13,5 @@ senha=input('Digite sua senha: ')
 a= Usuario(nome, senha)
 a.cadastrar(nome,senha)
 print(a.getnome())            
+
+print()
