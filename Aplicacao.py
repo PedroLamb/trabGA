@@ -12,7 +12,7 @@ class Aplicacao:
         opcao = -1
         while not self.terminou:
             if self.tela == 0: #Tela inicial.
-                self.TelaInicial()
+                self.telaInicial()
 
             elif self.tela == 1: #Tela de gerenciamento do álbum.
                 pass
@@ -37,5 +37,9 @@ class Aplicacao:
         opcao = menuInicial
         if opcao == '0':
             self.terminou == True
+        elif opcao == '1':
+            pass #Chamar a função novo álbum.
+        elif opcao == '2':
+            pass #Chamar a função acessar álbum
         else:
-            pass #Chamar a função de erro aqui após ela ser implementada. 
+            pass #Chamar a função de erro aqui. 
