@@ -8,5 +8,3 @@ def menu():
     print('0 - Sair da aplicação\n')
     item = input('Escolha uma opção: ')
     return item
-
-print('')
