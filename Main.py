@@ -1,9 +1,9 @@
-from Aplicacao import * #Precisa fazer o arquivo de Aplicacao pra funcionar.
+from Aplicacao import *
 
 aplicacao = Aplicacao()
 
+aplicacao.criarUsuariosCSV()
 
 aplicacao.executar()
-
 
 aplicacao.finalizar()

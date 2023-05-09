@@ -1,13 +1,26 @@
-import Figurinha
+import random
 import csv
-class Album():
-    def __init__(self,paginas, figurinhas, requerimento_de_troca):
-        self._paginas= paginas
-        self._figurinhas= figurinhas
-        self._requerito_de_troca= requerimento_de_troca
-    def folhar_album(self, pagina_escolha):
-        pagina_escolha= i
-        for i in range(0,3):
-            print(i)
-    def get_figurinhas():
-        return
+
+albumAtual = []
+usuarioAtual = []
+colecaoAtual = []
+
+def verAlbum():
+    print(albumAtual)
+
+def verColecao():
+    print(colecaoAtual)
+
+
+def abrirPacote():
+    figurinha1 = random.randint(1,15)
+    figurinha2 = random.randint(1,15)
+    figurinha3 = random.randint(1,15)
+    colecaoAtual.append(figurinha1)
+    colecaoAtual.append(figurinha2)
+    colecaoAtual.append(figurinha3)
+    print ('As figurinhas {},{} e {} foram adicionadas à coleção.'.format(figurinha1, figurinha2, figurinha3))
+    with open(usuarioAtual[0] + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
+        writer = csv.writer(colecaoArq)
+        for i in colecaoAtual:
+            writer.writerow([i])

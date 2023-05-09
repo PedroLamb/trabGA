@@ -1,28 +1,35 @@
-class Usuario():
-    def __init__(self,nomeUsuario,senha):
-        self._nomeUusario= nomeUsuario
-        self._senha= senha
-    def cadastrar(self,nomeUsuario,senha):
-        self._nomeUsuario = nomeUsuario
-        self._senha= senha  #adicionar limitador
-    def getnome(self):
-        return self._nomeUusario
-    def getsenha(self):
-        return self._senha
-    def login(self):
-        dono= '0'
-        senhaCadastrada= '0'
-        while dono!=self._nomeUsuario or senhaCadastrada!= self._senha:
-            dono=input('Digite seu nome de usuario: ')
-            senhaCadastrada= input('Digite sua senha:')
+import csv
+class Usuario:
+    def __init__(self, nome, senha):
+        self.nome = nome
+        self.senha = senha
+        self.album = None
+
+    def getNomeUsuario(self):
+        return self.nome()
+    
+    def cadastrarUsuario(self):
+        self.album = [False] * 15
+        with open('Usuarios.csv', mode = 'a', newline = '') as usuariosArq:
+            writer = csv.writer(usuariosArq)
+            writer.writerow([self.nome, self.senha])
+        with open(self.nome + ' - Album.csv', mode = 'a', newline = '') as albumArq: 
+            writer = csv.writer(albumArq)
+            for i in range(15):
+                writer.writerow([i+1, self.album[i]])
+        with open(self.nome + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
+            writer = csv.writer(colecaoArq)
+            pass
 
 
-
-nome= input('Informe seu nome: ')   
-senha=input('Digite sua senha: ')         
-a= Usuario(nome, senha)
-a.cadastrar(nome,senha)
-print(a.getnome()) 
-print(a.getsenha())     
-a.login()      
-
+    def logarUsuario(self):
+        with open('Usuarios.csv', mode = 'r', newline = '') as usuariosArq:
+            reader = csv.reader(usuariosArq)
+            for row in reader:
+                if row [0] == self.nome and row[1] == self.senha:
+                    return True
+            return False
+    
+    def getAlbum(self):
+        return self.album 
+    
