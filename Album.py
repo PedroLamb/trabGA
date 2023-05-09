@@ -6,7 +6,40 @@ usuarioAtual = []
 colecaoAtual = []
 
 def verAlbum():
-    print(albumAtual)
+    tamanhoPag = 5
+    numPagina = (len(albumAtual))//tamanhoPag
+    paginaAtual = 0
+
+    while True:
+        if paginaAtual == 0:
+            print("Album de Figurinhas")
+        else:
+            indexInicio = 1 + (paginaAtual-1)*tamanhoPag
+            indexFinal=indexInicio + tamanhoPag
+
+            pagina = albumAtual[indexInicio:indexFinal]
+
+            print(f"Página {paginaAtual}:")
+            for conteudo in pagina:
+                print(conteudo)
+
+        trocaPagina = input("Quer avançar pra próxima página? (voltar/próximo) ")
+
+        if trocaPagina.lower() == "próximo":
+            if paginaAtual < numPagina:
+                paginaAtual+=1
+            else:
+                print("Você está na última página.")
+        elif trocaPagina.lower() == "voltar":
+            if paginaAtual > 0:
+                paginaAtual-=1
+            else:
+                print("Você está na primeira página.")
+        elif trocaPagina.lower() == "sair":
+            break
+        else:
+            print("Inválido, tente novamente.")
+
 
 def verColecao():
     quantidadeFigurinhas = {}
