@@ -8,6 +8,7 @@ usuarioAtual = []
 colecaoAtual = []
 
 def verAlbum(aplicacao):
+    os.system('cls')
     with open('./Albuns/' + usuarioAtual[0] + ' - Album.csv', mode='r') as albumArq:
         reader = csv.reader(albumArq)
         albumAtual = [item[0] for item in list(reader)]
@@ -16,9 +17,11 @@ def verAlbum(aplicacao):
     paginaAtual = 0
 
     while True:
+        os.system('cls')
         if paginaAtual == 0:
             print("Album de Figurinhas")
         else:
+            os.system('cls')
             indexInicio = (paginaAtual-1)*tamanhoPag
             indexFinal = indexInicio + tamanhoPag
 
