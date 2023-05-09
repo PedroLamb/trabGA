@@ -9,7 +9,14 @@ def verAlbum():
     print(albumAtual)
 
 def verColecao():
-    print(colecaoAtual)
+    quantidadeFigurinhas = {}
+    for figurinha in colecaoAtual:
+        if figurinha in quantidadeFigurinhas:
+            quantidadeFigurinhas[figurinha] += 1
+        else:
+            quantidadeFigurinhas[figurinha] = 1
+    for figurinha, quantidade in quantidadeFigurinhas.items():
+        print("Figurinha {}: x{}".format(figurinha, quantidade))
 
 
 def abrirPacote():
