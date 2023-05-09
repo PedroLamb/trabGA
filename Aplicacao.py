@@ -121,11 +121,11 @@ class Aplicacao:
         usuario.logarUsuario()
         if usuario.logarUsuario() == True:
             usuarioAtual.append(usuario.nome)
-            with open(usuario.nome + ' - Album.csv', mode='r') as arqAlbuns:
+            with open('./Albuns/' + usuario.nome + ' - Album.csv', mode='r') as arqAlbuns:
                 reader = csv.reader(arqAlbuns)
                 for row in reader:
                         albumAtual.extend(row)
-            with open(usuario.nome + ' - Colecao.csv', mode = 'r') as arqColecoes:
+            with open('./Colecoes/' + usuario.nome + ' - Colecao.csv', mode = 'r') as arqColecoes:
                 reader = csv.reader(arqColecoes)
                 for row in reader:
                         colecaoAtual.extend(row)

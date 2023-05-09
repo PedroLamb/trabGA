@@ -60,10 +60,12 @@ def abrirPacote():
     colecaoAtual.append(figurinha2)
     colecaoAtual.append(figurinha3)
     print ('As figurinhas {},{} e {} foram adicionadas à coleção.'.format(figurinha1, figurinha2, figurinha3))
-    with open(usuarioAtual[0] + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
+    with open('./Colecoes/' + usuarioAtual[0] + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
         writer = csv.writer(colecaoArq)
         for i in colecaoAtual:
             writer.writerow([i])
+
+
 def colarFigurinha(numeroFigurinha,colecaoAtual, albumAtual):
     numeroFigurinha= input('Qual o numero da figurinha que você quer colar? ')
     if [numeroFigurinha] == False in albumAtual and [numeroFigurinha]== True in colecaoAtual:
