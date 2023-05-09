@@ -13,11 +13,11 @@ class Usuario:
         with open('Usuarios.csv', mode = 'a', newline = '') as usuariosArq:
             writer = csv.writer(usuariosArq)
             writer.writerow([self.nome, self.senha])
-        with open(self.nome + ' - Album.csv', mode = 'a', newline = '') as albumArq: 
+        with open('./Albuns/' + self.nome + ' - Album.csv', mode = 'a', newline = '') as albumArq: 
             writer = csv.writer(albumArq)
             for i in range(15):
-                writer.writerow([i+1, self.album[i]])
-        with open(self.nome + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
+                writer.writerow([self.album[i]])
+        with open('./Colecoes/' + self.nome + ' - Colecao.csv', mode = 'a', newline = '') as colecaoArq:
             writer = csv.writer(colecaoArq)
             pass
 

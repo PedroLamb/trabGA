@@ -95,10 +95,10 @@ class Aplicacao:
         if opcao == '0':
             self.tela = 0  #muda para a tela inicial
         elif opcao == '1':
-            verAlbum()
+            verAlbum(self)
             input('Pressione ENTER para prosseguir...')
         elif opcao == '2':
-            verColecao()
+            self.tela = 2
             input('Pressione ENTER para prosseguir...')
         elif opcao == '3':
             abrirPacote()
@@ -108,9 +108,11 @@ class Aplicacao:
 
      # Processa as opções da Tela Gerenciar Colecao - 2
     def telaGerenciarColecao(self):
-        opcao = menuGerenciarColecao()
+        opcao = verColecao()
         if opcao == '0':
             self.tela = 1  #muda para a tela Gerenciar Album
+        elif opcao == '1':
+            colarFigurinha()
         else:
             self.msgErro(1)
 
@@ -124,13 +126,14 @@ class Aplicacao:
             with open('./Albuns/' + usuario.nome + ' - Album.csv', mode='r') as arqAlbuns:
                 reader = csv.reader(arqAlbuns)
                 for row in reader:
-                        albumAtual.extend(row)
-            with open('./Colecoes/' + usuario.nome + ' - Colecao.csv', mode = 'r') as arqColecoes:
+                    albumAtual.extend(row)
+            with open('./Colecoes/' + usuario.nome + ' - Colecao.csv', mode='r') as arqColecoes:
                 reader = csv.reader(arqColecoes)
                 for row in reader:
+                    if row:
                         colecaoAtual.extend(row)
-                print('Verificando usuario e recuperando o album do usuario')
-                self.tela = 1
-                input('Pressione qualquer tecla para continuar...')
+            print('Verificando usuário e recuperando o álbum do usuário.')
+            self.tela = 1
+            input('Pressione qualquer tecla para continuar...')
         else:
             self.msgErro(1)
