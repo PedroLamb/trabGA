@@ -1,5 +1,6 @@
 import random
 import csv
+import os
 
 albumAtual = []
 usuarioAtual = []
@@ -21,7 +22,10 @@ def verAlbum():
 
             print(f"Página {paginaAtual}:")
             for conteudo in pagina:
-                print(conteudo)
+                if conteudo == True:
+                    print(conteudo)
+                else:
+                    print('X')
 
         trocaPagina = input("Quer avançar pra próxima página? (voltar/próximo) ")
 
@@ -40,16 +44,28 @@ def verAlbum():
         else:
             print("Inválido, tente novamente.")
 
+        
+
 
 def verColecao():
+    os.system('cls')
+    print('----------------GERENCIAR COLECAO----------------')
     quantidadeFigurinhas = {}
-    for figurinha in colecaoAtual:
-        if figurinha in quantidadeFigurinhas:
-            quantidadeFigurinhas[figurinha] += 1
+    for i in colecaoAtual:
+        if i in quantidadeFigurinhas:
+            quantidadeFigurinhas[i] += 1
         else:
-            quantidadeFigurinhas[figurinha] = 1
-    for figurinha, quantidade in quantidadeFigurinhas.items():
-        print("Figurinha {}: x{}".format(figurinha, quantidade))
+            quantidadeFigurinhas[i] = 1
+    for i, quantidade in quantidadeFigurinhas.items():
+        print("Figurinha {}: x{}".format(i, quantidade))
+    print(colecaoAtual)
+    print('1 - Colar figurinha')
+    print('2 - Disponibilizar para troca')
+    print('3 - Propor troca')
+    print('4 - Revisar solicitacoes')
+    print('0 - Voltar para a tela Gerenciar Album\n')
+    item = input('Escolha uma opcao: ')
+    return item
 
 
 def abrirPacote():
@@ -66,13 +82,24 @@ def abrirPacote():
             writer.writerow([i])
 
 
-def colarFigurinha(numeroFigurinha,colecaoAtual, albumAtual):
-    numeroFigurinha= input('Qual o numero da figurinha que você quer colar? ')
-    if [numeroFigurinha] == False in albumAtual and [numeroFigurinha]== True in colecaoAtual:
-        colecaoAtual=numeroFigurinha-1 
-        numeroFigurinha in albumAtual is True
+def colarFigurinha():
+    numeroFigurinha = int(input('Qual o numero da figurinha que você quer colar? '))
+    if numeroFigurinha in colecaoAtual:
+        if albumAtual[numeroFigurinha - 1] == 'False':
+            albumAtual[numeroFigurinha - 1] = True
+            colecaoAtual.remove(numeroFigurinha)
+            print(f"Figurinha {numeroFigurinha} colada com sucesso!")
+            with open('./Albuns/' + usuarioAtual[0] + ' - Album.csv', mode='w', newline='') as albumArq:
+                writer = csv.writer(albumArq)
+                for i in range(15):
+                    writer.writerow([albumAtual[i]])
+            with open('./Colecoes/' + usuarioAtual[0] + ' - Colecao.csv', mode='w', newline='') as colecaoArq:
+                writer = csv.writer(colecaoArq)
+                for i in range(len(colecaoAtual)):
+                    writer.writerow([colecaoAtual[i]])
     else:
         print("Figurinha não encontrada na coleção ou já está colada no álbum.")
+    input('Pressione ENTER para prosseguir...')
     #   if numeroFigurinha in colecaoAtual and not colecaoAtual[numeroFigurinha]:
     #      colecaoAtual[numeroFigurinha] = True
     #      albumAtual[numeroFigurinha] = True
