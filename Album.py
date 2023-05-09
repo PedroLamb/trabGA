@@ -56,6 +56,14 @@ def verAlbum(aplicacao):
 
 def verColecao():
     os.system('cls')
+    with open('./Albuns/' + usuarioAtual[0] + ' - Album.csv', mode='r') as albumArq:
+        reader = csv.reader(albumArq)
+        albumAtual = [item[0] for item in list(reader)]
+
+    with open('./Colecoes/' + usuarioAtual[0] + ' - Colecao.csv', mode='r') as colecaoArq:
+        reader = csv.reader(colecaoArq)
+        colecaoAtual = [int(item[0]) for item in list(reader)]
+        numeroFigurinha = int(input('Qual o número da figurinha que você quer colar? '))
     print('----------------GERENCIAR COLECAO----------------')
     quantidadeFigurinhas = {}
     for i in colecaoAtual:
