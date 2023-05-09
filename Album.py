@@ -64,3 +64,18 @@ def abrirPacote():
         writer = csv.writer(colecaoArq)
         for i in colecaoAtual:
             writer.writerow([i])
+def colarFigurinha(numeroFigurinha,colecaoAtual, albumAtual):
+    numeroFigurinha= input('Qual o numero da figurinha que você quer colar? ')
+    if [numeroFigurinha] == False in albumAtual and [numeroFigurinha]== True in colecaoAtual:
+        colecaoAtual=numeroFigurinha-1 
+        numeroFigurinha in albumAtual is True
+    else:
+        print("Figurinha não encontrada na coleção ou já está colada no álbum.")
+    #   if numeroFigurinha in colecaoAtual and not colecaoAtual[numeroFigurinha]:
+    #      colecaoAtual[numeroFigurinha] = True
+    #      albumAtual[numeroFigurinha] = True
+    #      print("Figurinha colada com sucesso!")
+    #      abrir_menu_anterior()
+    #   else:
+         
+    #      abrir_menu_anterior()
